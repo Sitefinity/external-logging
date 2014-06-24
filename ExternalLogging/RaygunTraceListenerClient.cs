@@ -8,11 +8,17 @@ using System.Text;
 
 namespace ExternalLogging
 {
+    /// <summary>
+    /// An <see cref="ITraceListenerClient"/> class for logging errors using the Mindscape.Raygun4Net API.
+    /// </summary>
     public class RaygunTraceListenerClient : ITraceListenerClient
     {
-        public void SendMessage(string message)
+        #region Public methods
+
+        /// <inheritdoc />
+        public void LogMessage(string message)
         {
-            var raygunAssembly = GetRaygunAssemblyFromAppDomain();
+            var raygunAssembly = RaygunTraceListenerClient.GetRaygunAssemblyFromAppDomain();
             if (raygunAssembly == null)
             {
                 throw new Exception("Raygun assembly is not added to the app domain of the web application!");
@@ -25,6 +31,10 @@ namespace ExternalLogging
 
             raygunClient.Send(raygunMessage);
         }
+        
+        #endregion
+
+        #region Private methods
 
         private static Assembly GetRaygunAssemblyFromAppDomain()
         {
@@ -39,8 +49,14 @@ namespace ExternalLogging
             return raygunAssembly;
         }
 
-        private const string raygunApiKey = "fzGOnvs9sCZlieiyDMgphA==";
+        #endregion
+
+        #region Private members
+
+        private const string raygunApiKey = "YOUR_RAYGUN_API_KEY";
         private const string raygunAssemblyName = "Mindscape.Raygun4Net";
         private static Assembly raygunAssembly;
+
+        #endregion
     }
 }

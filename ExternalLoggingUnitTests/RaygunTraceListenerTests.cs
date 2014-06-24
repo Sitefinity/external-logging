@@ -51,7 +51,7 @@ namespace ExternalLoggingUnitTests
         {
             public string Message { get; private set; }
 
-            public void SendMessage(string message)
+            public void LogMessage(string message)
             {
                 this.Message = message;
             }
