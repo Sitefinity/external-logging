@@ -39,7 +39,7 @@ namespace ExternalLogging
         /// <inheritdoc />
         public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, object data)
         {
-            if ((Filter == null) || Filter.ShouldTrace(eventCache, source, eventType, id, null, null, data, null))
+            if ((this.Filter == null) || this.Filter.ShouldTrace(eventCache, source, eventType, id, null, null, data, null))
             {
                 if (data is LogEntry)
                 {

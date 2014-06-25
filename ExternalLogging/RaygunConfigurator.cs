@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Telerik.Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Telerik.Sitefinity.Abstractions;
 using Telerik.Sitefinity.Logging;
-using Telerik.Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 
 namespace ExternalLogging
 {

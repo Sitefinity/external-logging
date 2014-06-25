@@ -1,10 +1,8 @@
-﻿using Mindscape.Raygun4Net;
-using Mindscape.Raygun4Net.Messages;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using Mindscape.Raygun4Net;
+using Mindscape.Raygun4Net.Messages;
 
 namespace ExternalLogging
 {
@@ -46,6 +44,7 @@ namespace ExternalLogging
                                   where a.GetName().Name == assemblyName
                                   select a).SingleOrDefault();
             }
+
             return raygunAssembly;
         }
 
