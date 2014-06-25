@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Mindscape.Raygun4Net;
 using Mindscape.Raygun4Net.Messages;
+using System.Web;
 
 namespace ExternalLogging
 {
@@ -31,9 +32,16 @@ namespace ExternalLogging
         /// <inheritdoc />
         public void LogMessage(string message)
         {
-            var raygunErrorMessage = new RaygunErrorMessage() { Message = message };
-            var raygunMessageDetails = new RaygunMessageDetails() { Error = raygunErrorMessage };
-            var raygunMessage = new RaygunMessage() { Details = raygunMessageDetails };
+            var raygunMessage = RaygunMessageBuilder.New
+                .SetHttpDetails(HttpContext.Current)
+                .SetEnvironmentDetails()
+                .SetMachineName(Environment.MachineName)
+                .SetClientDetails()
+                .SetVersion(this.raygunClient.ApplicationVersion)
+                .SetUser(this.raygunClient.User)
+                .Build();
+
+            raygunMessage.Details.Error = new RaygunErrorMessage() { Message = message };
 
             this.raygunClient.Send(raygunMessage);
         }
