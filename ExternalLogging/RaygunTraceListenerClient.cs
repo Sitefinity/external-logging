@@ -11,10 +11,9 @@ namespace ExternalLogging
     /// </summary>
     public class RaygunTraceListenerClient : ITraceListenerClient
     {
-        #region Public methods
+        #region Constructors
 
-        /// <inheritdoc />
-        public void LogMessage(string message)
+        public RaygunTraceListenerClient()
         {
             var raygunAssembly = RaygunTraceListenerClient.GetRaygunAssemblyFromAppDomain();
             if (raygunAssembly == null)
@@ -22,12 +21,21 @@ namespace ExternalLogging
                 throw new Exception("Raygun assembly is not added to the app domain of the web application!");
             }
 
+            this.raygunClient = new RaygunClient();
+        }
+
+        #endregion
+
+        #region Public methods
+
+        /// <inheritdoc />
+        public void LogMessage(string message)
+        {
             var raygunErrorMessage = new RaygunErrorMessage() { Message = message };
             var raygunMessageDetails = new RaygunMessageDetails() { Error = raygunErrorMessage };
             var raygunMessage = new RaygunMessage() { Details = raygunMessageDetails };
-            var raygunClient = new RaygunClient(RaygunTraceListenerClient.raygunApiKey);
 
-            raygunClient.Send(raygunMessage);
+            this.raygunClient.Send(raygunMessage);
         }
         
         #endregion
@@ -52,9 +60,9 @@ namespace ExternalLogging
 
         #region Private members
 
-        private const string raygunApiKey = "YOUR_RAYGUN_API_KEY";
         private const string raygunAssemblyName = "Mindscape.Raygun4Net";
         private static Assembly raygunAssembly;
+        private RaygunClient raygunClient;
 
         #endregion
     }
