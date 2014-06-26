@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Web;
 using Mindscape.Raygun4Net;
 using Mindscape.Raygun4Net.Messages;
-using System.Web;
 
 namespace ExternalLogging
 {
@@ -43,7 +43,7 @@ namespace ExternalLogging
 
             raygunMessage.Details.Error = new RaygunErrorMessage() { Message = message };
 
-            this.raygunClient.Send(raygunMessage);
+            this.raygunClient.SendInBackground(raygunMessage);
         }
         
         #endregion
