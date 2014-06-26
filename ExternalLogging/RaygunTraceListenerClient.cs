@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Mindscape.Raygun4Net;
+using System;
 using System.Linq;
 using System.Reflection;
-using Mindscape.Raygun4Net;
-using Mindscape.Raygun4Net.Messages;
-using System.Web;
+using Telerik.Sitefinity.Services;
 
 namespace ExternalLogging
 {
@@ -23,6 +22,7 @@ namespace ExternalLogging
             }
 
             this.raygunClient = new RaygunClient();
+            this.raygunClient.IgnoreCookieNames(new string[] { "ASP.NET_SessionId", ".ASPXAUTH", ".ASPXANONYMOUS", "AuthSession", "FedAuth", "FedAuth1", "SF-TokenId" });
         }
 
         #endregion
@@ -32,18 +32,17 @@ namespace ExternalLogging
         /// <inheritdoc />
         public void LogMessage(string message)
         {
-            var raygunMessage = RaygunMessageBuilder.New
-                .SetHttpDetails(HttpContext.Current)
-                .SetEnvironmentDetails()
-                .SetMachineName(Environment.MachineName)
-                .SetClientDetails()
-                .SetVersion(this.raygunClient.ApplicationVersion)
-                .SetUser(this.raygunClient.User)
-                .Build();
+            Exception ex;
+            if (SystemManager.CurrentHttpContext.Error != null)
+            {
+                ex = SystemManager.CurrentHttpContext.Error;
+            }
+            else
+            {
+                ex = new Exception(message);
+            }
 
-            raygunMessage.Details.Error = new RaygunErrorMessage() { Message = message };
-
-            this.raygunClient.Send(raygunMessage);
+            this.raygunClient.SendInBackground(ex);
         }
         
         #endregion
