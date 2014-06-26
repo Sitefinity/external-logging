@@ -32,16 +32,22 @@ namespace ExternalLogging
         /// <inheritdoc />
         public void LogMessage(string message)
         {
-            var raygunMessage = RaygunMessageBuilder.New
-                .SetHttpDetails(HttpContext.Current)
-                .SetEnvironmentDetails()
-                .SetMachineName(Environment.MachineName)
-                .SetClientDetails()
-                .SetVersion(this.raygunClient.ApplicationVersion)
-                .SetUser(this.raygunClient.User)
-                .Build();
-
-            raygunMessage.Details.Error = new RaygunErrorMessage() { Message = message };
+            RaygunErrorMessage raygunErrorMessage = new RaygunErrorMessage() 
+            { 
+                Message = message
+            };
+            
+            RaygunMessageDetails raygunMessageDetails = new RaygunMessageDetails() 
+            { 
+                Error = raygunErrorMessage, 
+                MachineName = Environment.MachineName,
+                Request = new RaygunRequestMessage(HttpContext.Current.Request, null)
+            };
+            
+            RaygunMessage raygunMessage = new RaygunMessage() 
+            { 
+                Details = raygunMessageDetails 
+            };
 
             this.raygunClient.SendInBackground(raygunMessage);
         }
