@@ -55,5 +55,3 @@ You need a Raygun API key, in order to run this sample. To acquire a Raygun API 
 Youtube video demo:
 
 [![Tooltip](https://raw.githubusercontent.com/Sitefinity-SDK/external-logging/develop/externalLogging.png)](http://youtu.be/-L_99f7UjZ8)
-
-[Trace listener tutorial](http://www.sitefinity.com/documentation/)
