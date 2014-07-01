@@ -2,7 +2,7 @@ External logging
 ============================
 As of Sitefinity 7.1, developers can implement their own custom error logger. This sample demonstrates error logging to an external application, which in this case is [Raygun.io](https://raygun.io/).
 
-### Requirements
+### Requirements 
 
 * Sitefinity license
 
