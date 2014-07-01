@@ -1,7 +1,7 @@
-﻿using Mindscape.Raygun4Net;
-using System;
+﻿using System;
 using System.Linq;
 using System.Reflection;
+using Mindscape.Raygun4Net;
 using Telerik.Sitefinity.Services;
 
 namespace ExternalLogging
