@@ -1,5 +1,8 @@
 External logging
 ============================
+
+[![Build Status](http://sdk-jenkins-ci.cloudapp.net/buildStatus/icon?job=Telerik.Sitefinity.Samples.ExternalLogging.CI)](http://sdk-jenkins-ci.cloudapp.net/job/Telerik.Sitefinity.Samples.ExternalLogging.CI/)
+
 As of Sitefinity 7.1, developers can implement their own custom error logger. This sample demonstrates error logging to an external application, which in this case is [Raygun.io](https://raygun.io/).
 
 ### Requirements 
@@ -53,4 +56,4 @@ Youtube video demo:
 
 [![Tooltip](https://raw.githubusercontent.com/Sitefinity-SDK/external-logging/develop/externalLogging.png)](http://youtu.be/YXXjEGRE_PE)
 
-[Trace listener tutorial](http://www.sitefinity.com/documentation/documentationarticles/tutorials-personalization)
+[Trace listener tutorial](http://www.sitefinity.com/documentation/)
