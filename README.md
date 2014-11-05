@@ -8,20 +8,14 @@ As of Sitefinity 7.1, developers can implement their own custom error logger. Th
 ### Requirements 
 
 * Sitefinity license
-
 * .NET Framework 4
-
 * Visual Studio 2012
-
 * Microsoft SQL Server 2008R2 or later versions
-
 * Windows Identity Foundation
-
    NOTE: Depending on the Microsoft OS version you are using, the method for downloading and installing or enabling the identity framework differs:
 
-  * Windows 7 - download from [Windows Identity Foundation](http://www.microsoft.com/en-us/download/details.aspx?id=17331)
-
-  * Windows 8 - in the Control Panel, turn on the relevant Windows feature Windows Identity Foundation 3.5* Windows Identity Foundation
+  * **Windows 7** - download from [Windows Identity Foundation](http://www.microsoft.com/en-us/download/details.aspx?id=17331)
+  * **Windows 8** - in the Control Panel, turn on the relevant Windows feature Windows Identity Foundation 3.5* Windows Identity Foundation
 
 ### Prerequisites
 
@@ -31,6 +25,11 @@ Clear the NuGet cache files. To do this:
 2. Select all files and delete them.
 
 You need a Raygun API key, in order to run this sample. To acquire a Raygun API key register in [Raugun.io](https://raygun.io/) and create a new application on your Raygun.io dashboard.
+
+### Nuget package restoration
+The solution in this repository relies on NuGet packages with automatic package restore while the build procedure takes place.   
+For a full list of the referenced packages and their versions see the [packages.config](https://github.com/Sitefinity-SDK/external-logging/blob/master/ExternalLogging/packages.config) file.    
+For a history and additional information related to package versions on different releases of this repository, see the [Releases page](https://github.com/Sitefinity-SDK/external-logging/releases).    
 
 
 ### Installation instructions
