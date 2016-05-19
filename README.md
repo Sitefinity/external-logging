@@ -3,11 +3,11 @@ External logging
 
 [![Build Status](http://sdk-jenkins-ci.cloudapp.net/buildStatus/icon?job=Telerik.Sitefinity.Samples.ExternalLogging.CI)](http://sdk-jenkins-ci.cloudapp.net/job/Telerik.Sitefinity.Samples.ExternalLogging.CI/)
 
-As of Sitefinity 7.1, developers can implement their own custom error logger. This sample demonstrates error logging to an external application, which in this case is [Raygun.io](https://raygun.io/).
+As of Sitefinity CMS version 7.1, developers can implement their own custom error logger. This sample demonstrates error logging to an external application, which in this case is [Raygun.io](https://raygun.io/).
 
 ### Requirements 
 
-* Sitefinity license
+* Sitefinity CMS license
 * .NET Framework 4
 * Visual Studio 2012
 * Microsoft SQL Server 2008R2 or later versions
@@ -35,13 +35,13 @@ For a history and additional information related to package versions on differen
 ### Installation instructions
 
 1. Clone the sample repository
-2. Open your Sitefinity application in Visual Studio.
+2. Open your Sitefinity CMS application in Visual Studio.
 3. From the context menu of the solution, select *Add* » *Existing project…*
 4. Browse to the folder of the custom error trace listener
 5. Select the ExternalLogging.csproj file
 6. From the context menu of the *Reference* folder in your project, select *Add* » *References…*
 7. Select the newly added **ExternalLogging** project
-8. Open the **web.config** file of your Sitefinity application and configure Raygun:
+8. Open the **web.config** file of your Sitefinity CMS application and configure Raygun:
   * Add the following section to configSections: 
    ```<section name="RaygunSettings" type="Mindscape.Raygun4Net.RaygunSettings, Mindscape.Raygun4Net"/>```
   * Add the Raygun settings configuration block: 
@@ -55,5 +55,5 @@ For a history and additional information related to package versions on differen
 
 [![Tooltip](https://raw.githubusercontent.com/Sitefinity-SDK/external-logging/master/externalLogging.png)](http://youtu.be/-L_99f7UjZ8)
 
-#### Sitefinity documentation
+#### Progress Sitefinity CMS Documentation
 [Tutorial: Create and enable a custom trace listener](http://docs.sitefinity.com/tutorial-create-and-enable-a-custom-trace-listener)
