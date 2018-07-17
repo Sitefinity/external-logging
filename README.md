@@ -1,4 +1,4 @@
-External logging
+External logging project
 ============================
 
 >**Latest supported version**: Sitefinity CMS 11.0.6700.0
